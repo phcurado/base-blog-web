@@ -1,0 +1,8 @@
+# The directory where dependencies are loaded
+/node_modules/
+
+# If you run "npm run build", result will end up here.
+/dist/
+
+# vscode config files
+/.vscode/

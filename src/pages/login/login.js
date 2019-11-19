@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import api from '../../config/api';
+import api from '../../config/api/api';
 import { Input, Container, Button } from '@material-ui/core';
 import AuthService from "../../services/authService";
 import Grid from '@material-ui/core/Grid';
+import { useHistory } from "react-router-dom";
 
 
 const LoginPage = () => {
@@ -10,10 +11,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState([]);
 
   async function login() {
-    AuthService.login(email, password).then(x => {
-      alert("deu boa")
-    }).catch(alert("asdf"))
-    setData(result.data.data)
+    AuthService.login(email, password).then(() => {
+      useHistory().push('/');
+    })
   }
 
   return (

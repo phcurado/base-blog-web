@@ -13,6 +13,7 @@ module.exports = {
 		filename: 'main.js',
 		publicPath: '/'
 	},
+	devtool: 'source-map',
 	devServer: {
 		historyApiFallback: true,
 	},

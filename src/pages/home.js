@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from '../config/api';
+import api from '../config/api/api';
 import { Table } from "../components";
 
 const Home = () => {

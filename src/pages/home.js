@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from '../config/api';
+import { Table } from "../components";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -11,15 +12,9 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
-  return (
-    <ul>
-      {data.map(item => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-    </ul>
-  )
+  return (<Table list={data}></Table>)
 };
 
 export default Home;

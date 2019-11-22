@@ -2,20 +2,14 @@ import React from 'react';
 
 import './navigator.scss';
 
-const navigator = () => {
+const navigator = props => {
+  const renderNav = () => {
+    return props.navList.map(nav => <li>{nav}</li>);
+  };
+
   return (
     <nav className="navigator">
-      <ul>
-        <li>
-          <a href="#">Página inicial</a>
-        </li>
-        <li>
-          <a href="#">Sobre</a>
-        </li>
-        <li>
-          <a href="#">Contato</a>
-        </li>
-      </ul>
+      <ul>{renderNav()}</ul>
     </nav>
   );
 };

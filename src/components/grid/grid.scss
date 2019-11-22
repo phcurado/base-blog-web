@@ -1,0 +1,11 @@
+.grid {
+  display: flex;
+  padding: 5px;
+  &-container {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  &-row {
+    flex-direction: row;
+  }
+}

@@ -1,9 +1,14 @@
+@import './normalize.scss';
+
+html,
 body {
-  margin: 0;
+  height: 100%;
 }
-.app {
-  width: 100px;
-  height: 100px;
-  background: #000;
-  color: #fff;
+.main {
+  display: flex;
+  min-height: 100%;
+  height: auto !important;
+}
+ul {
+  list-style-type: none;
 }

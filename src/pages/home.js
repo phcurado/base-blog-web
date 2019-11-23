@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import api from '../config/api/api';
-import { Table } from "../components";
+import { Table } from '../components';
 
 const Home = () => {
   const [data, setData] = useState([]);
 
-  async function fetchData() {
-    const result = await api.get('/posts')
-    setData(result.data.data)
-  }
+  // async function fetchData() {
+  //   const result = await api.get('/posts');
+  //   setData(result.data.data);
+  // }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  return (<Table list={data}></Table>)
+  return <Table list={data}></Table>;
 };
 
 export default Home;

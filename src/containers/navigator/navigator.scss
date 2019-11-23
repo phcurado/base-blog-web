@@ -1,4 +1,25 @@
 .navigator {
-  width: 240px;
+  width: 200px;
   border: 1px solid #f0f0f0;
+  background-color: #2222ff;
+  .nav-container {
+    padding: 0 0.4em;
+    .nav-title {
+      padding: 0 0.2em;
+      color: white;
+    }
+    .nav-link {
+      display: flex;
+      color: white;
+      align-items: center;
+      padding: 0.2em 0;
+      &:hover {
+        background-color: white;
+        color: #2222ff;
+      }
+      &-text {
+        margin-left: 1em;
+      }
+    }
+  }
 }

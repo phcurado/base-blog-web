@@ -1,7 +1,6 @@
 .navigator {
   width: 200px;
-  border: 1px solid #f0f0f0;
-  background-color: #2222ff;
+  background-color: #3939e8;
   .nav-container {
     padding: 0 0.4em;
     .nav-title {
@@ -12,7 +11,7 @@
       display: flex;
       color: white;
       align-items: center;
-      padding: 0.2em 0;
+      padding: 0.2em 0.2em;
       &:hover {
         background-color: white;
         color: #2222ff;

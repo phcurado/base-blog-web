@@ -18,3 +18,9 @@ ul {
 a {
   text-decoration: none;
 }
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}

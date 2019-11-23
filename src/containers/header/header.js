@@ -1,6 +1,8 @@
 import React from 'react';
 
+import './header.scss';
+
 const Header = props => {
-  return <div className="asdf">{props.children}</div>;
+  return <header className="header">{props.children}</header>;
 };
 export default Header;

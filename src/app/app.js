@@ -9,13 +9,15 @@ const App = () => {
   return (
     <Router>
       <Navigator></Navigator>
-      <Header>Header</Header>
-      <main>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-        </Switch>
-      </main>
+      <div class="wrapper">
+        <Header>Header</Header>
+        <main>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+          </Switch>
+        </main>
+      </div>
     </Router>
   );
 };

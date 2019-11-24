@@ -1,36 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import AuthService from '../../services/authService';
-import { useHistory } from 'react-router-dom';
-import { Grid, Box } from '../../components';
+import { Redirect } from 'react-router-dom';
+import { Grid } from '../../components';
 
-const LoginPage = () => {
+const LoginPage = props => {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
 
   async function login() {
     AuthService.login(email, password).then(() => {
-      useHistory().push('/');
+      props.history.push('/');
     });
   }
 
   return (
     <Grid container row>
       <Grid>
-        <Box>Olá</Box>
+        <input value={email} onChange={e => setEmail(e.target.value)} />
       </Grid>
       <Grid>
-        <Box>Olá</Box>
+        <input value={password} onChange={e => setPassword(e.target.value)} />
       </Grid>
+      <button onClick={login}>login</button>
     </Grid>
-    // <Grid container spacing={3}>
-    //   <Grid item xs={12}>
-    //     <Input value={email} onChange={e => setEmail(e.target.value)}></Input>
-    //   </Grid>
-    //   <Grid item xs={12}>
-    //     <Input value={password} type={"password"} onChange={e => setPassword(e.target.value)}></Input>
-    //   </Grid>
-    //   <Button onClick={login} >login</Button>
-    // </Grid>
   );
 };
 

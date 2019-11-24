@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Header, Navigator } from '../containers';
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Header, Navigator, PublicRoute, PrivateRoute } from '../containers';
 import { HomePage, LoginPage } from '../pages';
 
 import './app.scss';
@@ -9,12 +9,12 @@ const App = () => {
   return (
     <Router>
       <Navigator></Navigator>
-      <div class="wrapper">
+      <div className="wrapper">
         <Header>Header</Header>
         <main>
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/login" component={LoginPage} />
+            <PublicRoute path="/login" component={LoginPage} />
+            <PrivateRoute path="/" component={HomePage} />
           </Switch>
         </main>
       </div>

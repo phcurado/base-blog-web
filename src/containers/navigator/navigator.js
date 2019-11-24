@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './navigator.scss';
 
-const navigator = props => {
+const Navigator = () => {
   return <nav className="navigator">{renderModule()}</nav>;
 };
 
@@ -21,7 +21,7 @@ const renderNav = mod => {
       <ul>
         {mod.links.map(x => (
           <li>
-            <Link className="nav-link" to={x.to}>
+            <Link className="nav-link" to={x.to} onClick={x.action}>
               {x.icon}
               <span className="nav-link-text">{x.title}</span>
             </Link>
@@ -32,4 +32,4 @@ const renderNav = mod => {
   );
 };
 
-export default navigator;
+export default Navigator;

@@ -1,2 +1,2 @@
-export { default as LoginPage } from './login/login'
-export { default as HomePage } from './home'
+export { default as LoginPage } from './loginPage/loginPage';
+export { default as HomePage } from './home';

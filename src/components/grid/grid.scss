@@ -1,11 +1,28 @@
-.grid {
+$grid-slug: grid !default;
+$grid-columns: 12;
+
+.#{$grid-slug} {
   display: flex;
   padding: 5px;
+  flex: 1;
   &-container {
     flex-wrap: wrap;
     padding: 0;
   }
   &-row {
     flex-direction: row;
+  }
+  &-column {
+    flex-direction: column;
+  }
+  &-center {
+    justify-content: center;
+  }
+
+  @for $i from 1 through $grid-columns {
+    &-#{$i} {
+      flex: 0 0 100% * $i/12;
+      max-width: 100% * $i/12;
+    }
   }
 }

@@ -1,8 +1,20 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import AuthService from '../../services/authService';
-import { Grid, InputForm, Button } from '../../components';
 
 import './loginPage.scss';
+import {
+  FormControl,
+  InputLabel,
+  Input,
+  FormHelperText,
+  Grid,
+  Paper,
+  Container,
+  Button,
+  Typography
+} from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/SupervisedUserCircleSharp';
+import bg from '../../assets/img/bg.jpg';
 
 const LoginPage = props => {
   const [email, setEmail] = useState([]);
@@ -15,17 +27,44 @@ const LoginPage = props => {
   }
 
   return (
-    <Fragment>
-      <Grid container row center>
-        <Grid column size={5} />
-        <Grid column>
-          <InputForm value={email} onChange={e => setEmail(e.target.value)} />
-          <InputForm value={password} onChange={e => setPassword(e.target.value)} />
-          <Button onClick={login}>Entrar</Button>
-        </Grid>
-        <Grid column size={5} />
-      </Grid>
-    </Fragment>
+    <Grid
+      className="login-wrapper"
+      container
+      spacing={0}
+      alignItems="center"
+      justify="center"
+      style={{ background: `url(${bg})` }}
+    >
+      <Container>
+        <Paper className="login-paper">
+          <Grid container alignItems="center" direction="column" spacing={2}>
+            <Grid item>
+              <HomeIcon fontSize="large"></HomeIcon>
+            </Grid>
+            <Grid item>
+              <Typography variant="h3">Login</Typography>
+            </Grid>
+            <Grid item>
+              <FormControl>
+                <InputLabel htmlFor="login">Email</InputLabel>
+                <Input id="login" value={email} onChange={e => setEmail(e.target.value)} />
+              </FormControl>
+            </Grid>
+            <Grid item>
+              <FormControl>
+                <InputLabel htmlFor="password">Senha</InputLabel>
+                <Input id="password" value={password} onChange={e => setPassword(e.target.value)} />
+              </FormControl>
+            </Grid>
+            <Grid item>
+              <Button onClick={login} variant="contained" color="primary">
+                Login
+              </Button>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Container>
+    </Grid>
   );
 };
 

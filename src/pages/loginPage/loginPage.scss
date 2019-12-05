@@ -1,0 +1,18 @@
+.login {
+  &-wrapper {
+    flex: 1;
+  }
+  &-center {
+    flex-grow: 1;
+    width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &-paper {
+    background-image: linear-gradient(#ffffff, #c3c3c3);
+    margin: auto;
+    max-width: 500px;
+  }
+}

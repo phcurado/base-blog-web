@@ -1,4 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+
 import {
   TableContainer,
   Table,
@@ -28,9 +30,10 @@ const useStyles = makeStyles({
 
 const PostPage = props => {
   const [posts, setPosts] = useState([]);
+  const [queryParams, setQueryParams] = useState(useLocation().search);
 
   const fetchData = async () => {
-    const result = await PostService.get();
+    const result = await PostService.get(queryParams, 1, 10);
     setPosts(result.data);
   };
 

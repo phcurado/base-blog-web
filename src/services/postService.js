@@ -3,9 +3,9 @@ import routes from '../config/api/routes';
 import { CookieHelper } from '../helper';
 
 class PostService {
-  static async get() {
+  static async get(params, page, size) {
     return api
-      .get(routes.posts)
+      .get(routes.posts + params)
       .then(data => {
         return data.data;
       })

@@ -13,7 +13,8 @@ import {
   Paper,
   makeStyles,
   IconButton,
-  Container
+  Container,
+  TablePagination
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -31,10 +32,20 @@ const useStyles = makeStyles({
 const PostPage = props => {
   const [posts, setPosts] = useState([]);
   const [queryParams, setQueryParams] = useState(useLocation().search);
+  const [pageParams, setPageParams] = useState({ page: 1, size: 5, total: 0 });
 
-  const fetchData = async () => {
-    const result = await PostService.get(queryParams, 1, 10);
+  const fetchData = async (page = 1, size = 3) => {
+    const result = await PostService.get(queryParams, page, size);
+    setPageParams(result.metadata);
     setPosts(result.data);
+  };
+
+  const handleChangePage = async (event, newPage) => {
+    fetchData(newPage + 1);
+  };
+
+  const handleChangeRowsPerPage = async (event, newPage) => {
+    fetchData(1, event.target.value);
   };
 
   const editData = async id => {
@@ -97,6 +108,15 @@ const PostPage = props => {
                 </TableBody>
               </Table>
             </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[3, 5, 10, 25]}
+              component="div"
+              count={pageParams.total}
+              rowsPerPage={pageParams.size}
+              page={pageParams.page - 1}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+            />
           </Grid>
         </Grid>
       </Grid>

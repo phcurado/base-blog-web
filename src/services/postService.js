@@ -4,8 +4,12 @@ import { CookieHelper } from '../helper';
 
 class PostService {
   static async get(params, page, size) {
+    let config = {
+      headers: { page, size }
+    };
+
     return api
-      .get(routes.posts + params)
+      .get(routes.posts + params, config)
       .then(data => {
         return data.data;
       })

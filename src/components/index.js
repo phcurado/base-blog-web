@@ -3,7 +3,3 @@ export { default as Button } from './button/button';
 export { default as Grid } from './grid/grid';
 export { default as Input } from './input/input';
 export { default as InputForm } from './inputForm/inputForm';
-export { default as Table } from './table/table';
-export { default as TableRow } from './table/tableRow';
-export { default as TableCell } from './table/tableCell';
-export { default as TableHeader } from './table/tableHeader';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState } from 'react';
 import AuthService from '../../services/authService';
 
 import './loginPage.scss';
@@ -6,7 +6,6 @@ import {
   FormControl,
   InputLabel,
   Input,
-  FormHelperText,
   Grid,
   Paper,
   Container,
@@ -14,7 +13,6 @@ import {
   Typography
 } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/SupervisedUserCircleSharp';
-import bg from '../../assets/img/bg.jpg';
 
 const LoginPage = props => {
   const [email, setEmail] = useState([]);
@@ -27,14 +25,7 @@ const LoginPage = props => {
   }
 
   return (
-    <Grid
-      className="login-wrapper"
-      container
-      spacing={0}
-      alignItems="center"
-      justify="center"
-      style={{ background: `url(${bg})` }}
-    >
+    <Grid className="login-wrapper" container spacing={0} alignItems="center" justify="center">
       <Container>
         <Paper className="login-paper">
           <Grid container alignItems="center" direction="column" spacing={2}>

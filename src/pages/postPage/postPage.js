@@ -1,11 +1,30 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Grid, TableHeader, TableRow, TableCell, Table, Button } from '../../components';
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Grid,
+  Button,
+  Paper,
+  makeStyles,
+  IconButton,
+  Container
+} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import PostService from '../../services/postService';
 
 import './postPage.scss';
+
+const useStyles = makeStyles({
+  buttonGrid: {
+    padding: '10px 0'
+  }
+});
 
 const PostPage = props => {
   const [posts, setPosts] = useState([]);
@@ -28,39 +47,57 @@ const PostPage = props => {
     fetchData();
   }, []);
 
+  const classes = useStyles();
+
   return (
-    <Fragment>
-      <Grid container row center>
-        <Button onClick={() => props.history.push('/posts/new')}>Adicionar Post</Button>
-      </Grid>
-      <Grid container row center>
-        <Grid column>
-          <Table>
-            <thead>
-              <TableRow>
-                <TableHeader>Id</TableHeader>
-                <TableHeader>Nome</TableHeader>
-                <TableHeader>Autor</TableHeader>
-                <TableHeader>Ações</TableHeader>
-              </TableRow>
-            </thead>
-            <tbody>
-              {posts.map(x => (
-                <TableRow key={x.id}>
-                  <TableCell>{x.id}</TableCell>
-                  <TableCell>{x.title}</TableCell>
-                  <TableCell>{x.author.nickname}</TableCell>
-                  <TableCell width={'5%'}>
-                    <EditIcon onClick={_ => editData(x.id)}></EditIcon>
-                    <DeleteIcon onClick={_ => deleteData(x.id)}></DeleteIcon>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </tbody>
-          </Table>
+    <Container>
+      <Grid container direction="column">
+        <Grid container direction="row" justify="flex-end" className={classes.buttonGrid}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => props.history.push('/posts/new')}
+          >
+            Adicionar Post
+          </Button>
+        </Grid>
+        <Grid container direction="row">
+          <Grid container direction="column">
+            <TableContainer component={Paper}>
+              <Table size="small" aria-label="a dense table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Id</TableCell>
+                    <TableCell align="left">Nome</TableCell>
+                    <TableCell align="left">Autor</TableCell>
+                    <TableCell align="right">Ações</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {posts.map(row => (
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row">
+                        {row.id}
+                      </TableCell>
+                      <TableCell align="left">{row.title}</TableCell>
+                      <TableCell align="left">{row.author.nickname}</TableCell>
+                      <TableCell align="right">
+                        <IconButton onClick={_ => editData(row.id)}>
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton onClick={_ => deleteData(row.id)}>
+                          <DeleteIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
         </Grid>
       </Grid>
-    </Fragment>
+    </Container>
   );
 };
 

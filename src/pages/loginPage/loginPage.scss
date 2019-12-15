@@ -1,6 +1,10 @@
 .login {
   &-wrapper {
     flex: 1;
+    background-image: url('../../assets/img/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   &-center {
     flex-grow: 1;
@@ -11,7 +15,7 @@
     transform: translate(-50%, -50%);
   }
   &-paper {
-    background-image: linear-gradient(#ffffff, #c3c3c3);
+    background: rgba(255, 255, 255, 0.4) !important;
     margin: auto;
     max-width: 500px;
   }
